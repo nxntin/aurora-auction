@@ -1,7 +1,10 @@
 
 
+import { Link,  } from "react-router-dom";
 import "./index.scss"
 function Homepages() {
+ 
+ 
   return (
    
       <div className="container">
@@ -14,7 +17,8 @@ function Homepages() {
             <a href="#auctions">Auctions</a>
             <a href="#categories">Categories</a>
             <a href="#search">Search</a>
-            <a href="#login">Login</a>
+           <Link to="/login">Login</Link>
+          
           </nav>
         </header>
   
@@ -109,6 +113,7 @@ function Homepages() {
         </footer>
       </div>
     );
+    
   }
   
 

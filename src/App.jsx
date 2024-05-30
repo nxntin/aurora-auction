@@ -1,7 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 
 import LoginPopup from "./pages/login";
-import Homepages from "./pages/login/home";
+import Homepages from "./pages/home";
+
 
 function App() {
   const router = createBrowserRouter([
@@ -13,6 +14,7 @@ function App() {
       path: "/login",
       element: <LoginPopup />,
     },
+   
   ]);
 
   return <RouterProvider router={router} />;

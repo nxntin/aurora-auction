@@ -1,90 +1,116 @@
 import { UserOutlined } from "@ant-design/icons";
 import "./index.scss";
-import { Link } from "react-router-dom";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Link, useNavigate } from "react-router-dom";
+import { Button, Checkbox, Form, Input, Space } from "antd";
+import api from "../../config/axios";
+import FormItem from "antd/es/form/FormItem";
+import { toast } from "react-toastify";
+import { useDispatch, useSelector } from "react-redux";
+import { login, selectUser } from "../../redux/features/counterSlice";
+import { useForm } from "antd/es/form/Form";
 
 function LoginPopup() {
-  const onFinish = (values) => {
-    console.log("Success:", values);
+  const distpatch = useDispatch();
+  const redux = useSelector(selectUser);
+  const navigate = useNavigate();
+  const [form] = useForm();
+
+  const onFinish = async (values) => {
+    try {
+      console.log(values);
+      const user = await api.post("/api/login", values);
+      distpatch(login(user.data));
+      localStorage.setItem("token", user.data.token); //lưu token vao localStogare
+      toast.success("login success");
+      navigate("/");
+    } catch (error) {
+      toast.error("Login false");
+      console.log(error.response.data.error);
+      form.resetFields();
+    }
   };
-  const onFinishFailed = (errorInfo) => {
-    console.log("Failed:", errorInfo);
-  };
+
   return (
-    <div className="LoginPopup">
-      <div className="wrapper">
-        <div className="header">
-          <div className="header-left">
-            <UserOutlined className="icon" />
-            <h2 className="login-title">Log In</h2>
-          </div>
-        </div>
-        <Form
-    name="basic"
-    labelCol={{
-      span: 8,
-    }}
-    wrapperCol={{
-      span: 16,
-    }}
-    style={{
-      maxWidth: 600,
-    }}
-    initialValues={{
-      remember: true,
-    }}
-    onFinish={onFinish}
-    onFinishFailed={onFinishFailed}
-    autoComplete="off"
-  >
-    <Form.Item
-      label="Username"
-      name="username"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your username!',
-        },
-      ]}
-    >
-      <Input />
-    </Form.Item>
+    <div className="loginPage">
+      <div className="loginPage__left ">
+        <img
+          src="https://i.pinimg.com/originals/5e/47/a8/5e47a80fa0cbfb1e51034a17841d1d86.jpg"
+          alt=""
+        />
+      </div>
+      <div className="loginPage__right ">
+        <>
+          <Form
+            onFinish={onFinish}
+            form={form}
+            name="validateOnly"
+            layout="vertical"
+            autoComplete="off"
+          >
+            <h2>Login Page</h2>
+            <Form.Item
+              name="phone"
+              label="Phone"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item
+              name="password"
+              label="Password"
+              rules={[
+                {
+                  required: true,
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
+            <Form.Item>
+              <Space>
+                <Button
+                  htmlType="submit"
+                  className="btnStyle"
+                  form={form}
+                  onClick={() => form.submit()}
+                >
+                  Submit
+                </Button>
+              </Space>
+            </Form.Item>
 
-    <Form.Item
-      label="Password"
-      name="password"
-      rules={[
-        {
-          required: true,
-          message: 'Please input your password!',
-        },
-      ]}
-    >
-      <Input.Password />
-    </Form.Item>
+            <Form.Item>
+              <p style={{ textAlign: "center", fontWeight: "700" }}>Or</p>
+            </Form.Item>
 
-    <Form.Item
-      name="remember"
-      valuePropName="checked"
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Checkbox>Remember me</Checkbox>
-    </Form.Item>
-
-    <Form.Item
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Button type="primary" htmlType="submit">
-        Submit
-      </Button>
-    </Form.Item>
-  </Form>
+            <Form.Item>
+              <Space>
+                <Button
+                  style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    gap: "20px",
+                    cursor: "pointer",
+                    borderRadius: "20px",
+                  }}
+                  form={form}
+                >
+                  <img
+                    width={30}
+                    src="https://storage.googleapis.com/support-kms-prod/ZAl1gIwyUsvfwxoW9ns47iJFioHXODBbIkrK"
+                    alt=""
+                  />
+                  Login with google
+                </Button>
+              </Space>
+            </Form.Item>
+          </Form>
+        </>
       </div>
     </div>
   );

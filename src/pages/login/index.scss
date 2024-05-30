@@ -1,0 +1,121 @@
+.LoginPopup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: none;
+}
+
+.wrapper {
+  background: white;
+  padding: 40px 50px; // Tăng padding để tạo khoảng trống
+  border-radius: 8px; // Bo tròn đường viền
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); // Thêm bóng cho form
+  width: 30vw; // Sử dụng 30% chiều rộng của viewport
+  max-width: 400px; // Giới hạn chiều rộng tối đa
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid #ddd; // Thêm viền dưới
+  padding-bottom: 10px; // Tạo khoảng cách dưới tiêu đề
+  margin-bottom: 20px; // Tạo khoảng cách dưới header
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+ 
+}
+
+.icon {
+  font-size: 24px;
+  margin-right: 8px; // Thêm khoảng cách giữa icon và tiêu đề
+}
+
+.login-title {
+  font-size: 24px;
+  margin: 0;
+  text-align: left; // Căn trái để gần icon hơn
+    line-height: 24px; /* Điều chỉnh chiều cao dòng để khớp với biểu tượng */
+}
+
+.close {
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.LoginPopup_form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+input[type="email"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px; // Chỉnh lại kích thước chữ
+}
+
+
+.forgot-password {
+  align-self: flex-end;
+  margin-bottom: 20px;
+  cursor: pointer;
+  color: #999;
+}
+
+.login-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 20px; // Tạo khoảng cách lớn hơn phía trên
+  margin-bottom: 30px; // Tạo khoảng cách phía dưới
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #b71c1c;
+  color: white;
+  font-weight: bold;
+  font-size: 16px; // Chỉnh lại kích thước chữ
+}
+
+.google-btn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 10px;
+  border: 1px solid #db4437;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: white;
+  color: #db4437;
+  font-weight: bold;
+  font-size: 16px; // Chỉnh lại kích thước chữ
+}
+
+.signup-text {
+  margin-top: 20px;
+  margin-bottom: 20px; // Thêm khoảng cách phía dưới
+  color: #999;
+  text-align: center; // Căn giữa nội dung trong signup-text
+  font-size: 14px; // Chỉnh lại kích thước chữ
+}
+
+.signup-text a {
+  color: #db4437;
+  text-decoration: none;
+  font-weight: bold; // Chữ đậm cho link
+}

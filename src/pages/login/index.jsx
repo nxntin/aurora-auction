@@ -1,4 +1,8 @@
-import { UserOutlined } from "@ant-design/icons";
+import {
+  EyeInvisibleOutlined,
+  EyeTwoTone,
+  UserOutlined,
+} from "@ant-design/icons";
 import "./index.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { Button, Checkbox, Form, Input, Space } from "antd";
@@ -8,12 +12,14 @@ import { toast } from "react-toastify";
 import { useDispatch, useSelector } from "react-redux";
 import { login, selectUser } from "../../redux/features/counterSlice";
 import { useForm } from "antd/es/form/Form";
+import { useState } from "react";
 
 function LoginPopup() {
   const distpatch = useDispatch();
   const redux = useSelector(selectUser);
   const navigate = useNavigate();
   const [form] = useForm();
+  const [passwordVisible, setPasswordVisible] = useState(false);
 
   const onFinish = async (values) => {
     try {
@@ -68,7 +74,7 @@ function LoginPopup() {
                 },
               ]}
             >
-              <Input />
+              <Input type="password" />
             </Form.Item>
             <Form.Item>
               <Space>
@@ -109,6 +115,9 @@ function LoginPopup() {
                 </Button>
               </Space>
             </Form.Item>
+            <p className="login-footer">
+              Don't have an account? <Link to="/register">Register</Link>
+            </p>
           </Form>
         </>
       </div>

@@ -1,21 +1,28 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-
-import LoginPopup from "./pages/login";
-import Homepages from "./pages/home";
-import Dashboard from "./pages/Dashboard/Dashboard";
-import Category from "./pages/category"
-
-
+import HomePage from "./pages/homepage";
+import Shop from "./pages/shop";
+import Dashboard from "../Dashboard";
+import Category from "../Category";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <Homepages />,
+      element: <HomePage />,
     },
     {
-      path: "/login",
-      element: <LoginPopup />,
+      path: "/shop",
+      element: <Shop />,
+    },
+    {
+      path: "/dashboard",
+      element: <Dashboard />,
+      children: [
+        {
+          path: "/dashboard/category",
+          element: <Category />,
+        }
+      ]
     },
     {
       path: "/dashboard",

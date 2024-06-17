@@ -78,7 +78,7 @@ const HomePage = () => {
             />
             <p className="product-title">Iconic Jewels: Her Sense of Style</p>
             <p className="product-date">2-16 MAY 2024 | 12:00 PM CEST | GENEVA</p>
-            <button className="add-to-cart-button">ADD TO CART</button>
+            <button className="add-to-cart-button">BILD</button>
           </div>
           <div className="product-item">
             <img
@@ -88,7 +88,7 @@ const HomePage = () => {
             />
             <p className="product-title">Iconic Jewels: Her Sense of Style</p>
             <p className="product-date">2-16 MAY 2024 | 12:00 PM CEST | GENEVA</p>
-            <button className="add-to-cart-button">ADD TO CART</button>
+            <button className="add-to-cart-button">BILD</button>
           </div>
           <div className="product-item">
             <img

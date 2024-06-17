@@ -1,8 +1,8 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import HomePage from "./pages/homepage";
 import Shop from "./pages/shop";
-import Dashboard from "../Dashboard";
-import Category from "../Category";
+import ItemDetails from "./pages/itemdetails";
+import Jewelry from "./pages/jewelry";
 
 function App() {
   const router = createBrowserRouter([
@@ -15,27 +15,13 @@ function App() {
       element: <Shop />,
     },
     {
-      path: "/dashboard",
-      element: <Dashboard />,
-      children: [
-        {
-          path: "/dashboard/category",
-          element: <Category />,
-        }
-      ]
+      path: "/itemdetails",
+      element: <ItemDetails />,
     },
     {
-      path: "/dashboard",
-      element: <Dashboard />,
-      children:[{
-        path:"/dashboard/category",
-        element:<Category/>
-      },
-       
-      ]
-    },
-   
-   
+      path: "/jewelry",
+      element: <Jewelry />,
+    }
   ]);
 
   return <RouterProvider router={router} />;
